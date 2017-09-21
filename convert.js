@@ -22,7 +22,6 @@ const convert = async (zipFilePath) => {
 
     const mappedData = convertedData.reduce((acc, person) => {
       const {first_name, last_name, phone, amount, date, cc} = person;
-      console.log(person.amount, Number(person.amount), typeof Number(person.amount));
       const formatedPerson = {
         'name': `${last_name} ${first_name}`,
         'phone': phone.replace(/[^\d+]+/g, ''),
