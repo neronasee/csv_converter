@@ -1,8 +1,8 @@
-const minizip = require('node-minizip');
+const extract = require('extract-zip');
 
 const unzipFiles = (inputFilePath, outputFolder) => {
   return new Promise((resolve, reject) => {
-    minizip.unzip(inputFilePath, outputFolder, (err) => {
+    extract(inputFilePath, {dir: outputFolder}, (err) => {
       if (err) return reject(err);
 
       resolve('Successful unzip');

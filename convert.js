@@ -35,7 +35,7 @@ const convert = async (zipFilePath) => {
     await fs.writeFile(path.join(outputDir, 'result.json'), JSON.stringify(mappedData));
 
     await fs.remove(tempDir);
-    
+
     console.log('Done');
   } catch (e) {
     console.log(e);
