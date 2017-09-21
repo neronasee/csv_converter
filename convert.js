@@ -21,10 +21,15 @@ const convert = async (zipFilePath) => {
     const convertedData = await csvToJson(path.join(tempDir, 'temp.csv'));
 
     const mappedData = convertedData.reduce((acc, person) => {
-      const {first_name, last_name, phone, date, cc} = person;
+      const {first_name, last_name, phone, amount, date, cc} = person;
       const formatedPerson = {
-        'name': `${first_name} ${last_name}`,
+        'name': `${last_name} ${first_name}`,
         'phone': phone.replace(/[^\d+]+/g, ''),
+        'person': {
+          'firstName': first_name,
+          'lastName': last_name,
+        },
+        'amount': amount,
         'date': moment(date, 'DD/MM/YYYY').format('YYYY-MM-DD'),
         'costCenterNum': cc.replace(/[^\d+]+/g, ''),
       };
