@@ -22,6 +22,7 @@ const convert = async (zipFilePath) => {
 
     const mappedData = convertedData.reduce((acc, person) => {
       const {first_name, last_name, phone, amount, date, cc} = person;
+      console.log(person.amount, Number(person.amount), typeof Number(person.amount));
       const formatedPerson = {
         'name': `${last_name} ${first_name}`,
         'phone': phone.replace(/[^\d+]+/g, ''),
@@ -29,7 +30,7 @@ const convert = async (zipFilePath) => {
           'firstName': first_name,
           'lastName': last_name,
         },
-        'amount': amount,
+        'amount': Number(amount),
         'date': moment(date, 'DD/MM/YYYY').format('YYYY-MM-DD'),
         'costCenterNum': cc.replace(/[^\d+]+/g, ''),
       };
